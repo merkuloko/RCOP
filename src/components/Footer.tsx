@@ -1,5 +1,7 @@
-import React from 'react';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+"use client";
+
+import React, { useState } from 'react';
+import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
 
 /**
  * Footer & ContactSection Component
@@ -7,6 +9,43 @@ import { Mail, Phone, MapPin, Send } from 'lucide-react';
  * Form is mapped to the dark teal color palette.
  */
 const Footer = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('loading');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setStatus('error');
+      }
+    } catch (error) {
+      console.error('Submission error:', error);
+      setStatus('error');
+    }
+  };
+
   return (
     <footer id="contact" className="bg-brand-dark text-white pt-24 pb-12 px-4 md:px-6">
       <div className="max-w-7xl mx-auto">
@@ -55,12 +94,16 @@ const Footer = () => {
 
           {/* Contact Form */}
           <div className="bg-white p-8 md:p-12 rounded-3xl shadow-2xl">
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-sm font-bold text-brand-dark uppercase tracking-wider">Name</label>
                   <input 
                     type="text" 
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
                     placeholder="Jose Riz."
                     className="w-full bg-gray-50 border border-gray-100 rounded-xl px-4 py-3 text-brand-dark focus:outline-none focus:ring-2 focus:ring-brand-teal transition-all"
                   />
@@ -69,6 +112,10 @@ const Footer = () => {
                   <label className="text-sm font-bold text-brand-dark uppercase tracking-wider">Email</label>
                   <input 
                     type="email" 
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
                     placeholder="jriz@gmail.com"
                     className="w-full bg-gray-50 border border-gray-100 rounded-xl px-4 py-3 text-brand-dark focus:outline-none focus:ring-2 focus:ring-brand-teal transition-all"
                   />
@@ -78,6 +125,10 @@ const Footer = () => {
               <div className="space-y-2">
                 <label className="text-sm font-bold text-brand-dark uppercase tracking-wider">Project Details</label>
                 <textarea 
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
                   rows={4} 
                   placeholder="Tell us about your project..." 
                   className="w-full bg-gray-50 border border-gray-100 rounded-xl px-4 py-3 text-brand-dark focus:outline-none focus:ring-2 focus:ring-brand-teal transition-all resize-none"
@@ -86,10 +137,29 @@ const Footer = () => {
 
               <button 
                 type="submit" 
-                className="w-full bg-brand-teal hover:bg-brand-accent text-white font-bold py-4 rounded-xl shadow-lg shadow-brand-teal/20 transition-all flex items-center justify-center gap-2"
+                disabled={status === 'loading'}
+                className="w-full bg-brand-teal hover:bg-brand-accent text-white font-bold py-4 rounded-xl shadow-lg shadow-brand-teal/20 transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                Send Message <Send size={20} />
+                {status === 'loading' ? (
+                  <>Sending... <div className="animate-spin h-5 w-5 border-2 border-white border-t-transparent rounded-full" /></>
+                ) : (
+                  <>Send Message <Send size={20} /></>
+                )}
               </button>
+
+              {status === 'success' && (
+                <div className="flex items-center gap-2 text-green-600 font-medium justify-center animate-in fade-in slide-in-from-top-1">
+                  <CheckCircle size={20} />
+                  Message sent successfully!
+                </div>
+              )}
+
+              {status === 'error' && (
+                <div className="flex items-center gap-2 text-red-600 font-medium justify-center animate-in fade-in slide-in-from-top-1">
+                  <AlertCircle size={20} />
+                  Failed to send message. Please try again.
+                </div>
+              )}
             </form>
           </div>
         </div>
