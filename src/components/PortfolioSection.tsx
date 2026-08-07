@@ -67,9 +67,6 @@ const PortfolioSection = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
                 <span className="text-brand-teal font-bold text-xs uppercase tracking-widest mb-2">{project.category}</span>
                 <h4 className="text-white text-2xl font-bold mb-4">{project.title}</h4>
-                <button className="flex items-center gap-2 text-white/80 hover:text-white text-sm font-medium transition-colors w-fit">
-                  View Case Study <ExternalLink size={16} />
-                </button>
               </div>
             </div>
           ))}

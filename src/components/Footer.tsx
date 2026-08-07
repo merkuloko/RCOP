@@ -2,8 +2,9 @@
 
 import React, { useState } from 'react';
 import { Turnstile } from '@marsidev/react-turnstile';
-import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { Phone, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
 import Image from 'next/image';
+import { FaFacebook } from "react-icons/fa";
 
 /**
  * Footer & ContactSection Component
@@ -36,7 +37,6 @@ const Footer = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        // We include the turnstileToken alongside the rest of the form data
         body: JSON.stringify({
           ...formData,
           turnstileToken
@@ -69,40 +69,70 @@ const Footer = () => {
             </div>
 
             <div className="space-y-6">
-              <div className="flex items-center gap-4 group">
-                <div className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center group-hover:bg-brand-teal transition-colors">
-                  <Mail className="text-brand-teal group-hover:text-white" />
-                </div>
-                <div>
-                  <p className="text-xs text-gray-500 uppercase font-bold tracking-widest">Email Us</p>
-                  <a href="mailto:hello@rcad.com" className="text-lg font-medium hover:text-brand-teal transition-colors">[email dito]</a>
-                </div>
+
+            <div className="flex items-center gap-4 group">
+              <div className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center group-hover:bg-brand-teal transition-colors">
+                <FaFacebook className="h-6 w-6 text-brand-teal group-hover:text-white" />
               </div>
 
-              <div className="flex items-center gap-4 group">
-                <div className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center group-hover:bg-brand-teal transition-colors">
-                  <Phone className="text-brand-teal group-hover:text-white" />
-                </div>
-                <div>
-                  <p className="text-xs text-gray-500 uppercase font-bold tracking-widest">Call Us</p>
-                  <a href="tel:+1234567890" className="text-lg font-medium hover:text-brand-teal transition-colors">[Number dito]</a>
-                </div>
-              </div>
+              <div>
+                <p className="text-xs text-gray-500 uppercase font-bold tracking-widest">
+                  Visit our Facebook Page
+                </p>
 
-              <div className="flex items-center gap-4 group">
-                <div className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center group-hover:bg-brand-teal transition-colors">
-                  <MapPin className="text-brand-teal group-hover:text-white" />
-                </div>
-                <div>
-                  <p className="text-xs text-gray-500 uppercase font-bold tracking-widest">Office</p>
-                  <p className="text-lg font-medium">[Saan kayo located?]</p>
-                </div>
+                <a
+                  href="[Link sa FB Page]"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-lg font-medium hover:text-brand-teal transition-colors"
+                >
+                  [FB Page Name]
+                </a>
               </div>
             </div>
-          </div>
 
-          {/* Contact Form */}
-          <div className="bg-white p-8 md:p-12 rounded-3xl shadow-2xl">
+            {/* Phone */}
+            <div className="flex items-center gap-4 group">
+              <div className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center group-hover:bg-brand-teal transition-colors">
+                <Phone className="text-brand-teal group-hover:text-white" />
+              </div>
+
+              <div>
+                <p className="text-xs text-gray-500 uppercase font-bold tracking-widest">
+                  Call Us
+                </p>
+
+                <a
+                  href="tel:+1234567890"
+                  className="text-lg font-medium hover:text-brand-teal transition-colors"
+                >
+                  [Number dito]
+                </a>
+              </div>
+            </div>
+
+            {/* Office */}
+            <div className="flex items-center gap-4 group">
+              <div className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center group-hover:bg-brand-teal transition-colors">
+                <MapPin className="text-brand-teal group-hover:text-white" />
+              </div>
+
+              <div>
+                <p className="text-xs text-gray-500 uppercase font-bold tracking-widest">
+                  Office
+                </p>
+
+                <p className="text-lg font-medium">
+                  [Saan kayo located?]
+                </p>
+              </div>
+            </div>
+
+           </div>
+            {/* Close Contact Information */}
+            </div>
+            {/* Contact Form */}
+            <div className="bg-white p-8 md:p-12 rounded-3xl shadow-2xl">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-2">

@@ -3,7 +3,6 @@ import { FileText, CheckCircle, GraduationCap } from 'lucide-react';
 
 /**
  * AboutSection Component
- * Dedicated profile for Ar. Rondemer B. Calumba.
  * Includes placeholders for academic and professional certifications as requested.
  */
 const AboutSection = () => {
@@ -21,10 +20,10 @@ const AboutSection = () => {
         <div className="flex flex-col md:flex-row gap-16">
           <div className="md:w-1/2 space-y-8">
             <div>
-              <h2 className="text-brand-teal font-bold tracking-widest uppercase text-sm mb-4">Architect Profile</h2>
-              <h3 className="text-4xl font-bold text-brand-dark mb-6">[Pangalan ni Archi]</h3>
+              <h2 className="text-brand-teal font-bold tracking-widest uppercase text-sm mb-4">Ar. Profile</h2>
+              <h3 className="text-4xl font-bold text-brand-dark mb-6">[Pangalan ni Ar.]</h3>
               <p className="text-gray-600 text-lg leading-relaxed mb-6">
-               [Describe si Archi. dito]
+               [Describe si Ar. dito]
               </p>
             </div>
 
