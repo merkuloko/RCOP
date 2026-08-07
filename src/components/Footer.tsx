@@ -5,6 +5,7 @@ import { Turnstile } from '@marsidev/react-turnstile';
 import { Phone, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
 import Image from 'next/image';
 import { FaFacebook } from "react-icons/fa";
+import Link from "next/link";
 
 /**
  * Footer & ContactSection Component
@@ -224,8 +225,19 @@ const Footer = () => {
             <span>© 2026 [Company Name]. All rights reserved.</span>
           </div>
           <div className="flex gap-8">
-            <a href="#" className="hover:text-brand-teal transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-brand-teal transition-colors">Terms of Service</a>
+            <Link
+              href="/privacy-policy"
+              className="hover:text-brand-teal transition-colors"
+            >
+              Privacy Policy
+            </Link>
+
+            <Link
+              href="/terms-of-service"
+              className="hover:text-brand-teal transition-colors"
+            >
+              Terms of Service
+            </Link>
           </div>
         </div>
       </div>

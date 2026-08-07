@@ -1,24 +1,31 @@
-export const metadata = {
-  title: "Terms of Service | [Company Name]",
-  description: "Terms of Service for [Company Name].",
-};
+"use client";
+
+import Link from "next/link";
 
 export default function TermsPage() {
   return (
     <main className="min-h-screen bg-white">
       <div className="mx-auto max-w-4xl px-6 py-20">
-        <h1 className="text-4xl font-bold text-brand-dark mb-8">
+
+        <Link
+          href="/"
+          className="mb-8 inline-flex items-center gap-2 rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-brand-dark transition hover:bg-gray-100"
+        >
+          ← Back to Home
+        </Link>
+
+        <h1 className="mb-8 text-4xl font-bold text-brand-dark">
           Terms of Service
         </h1>
 
-        <p className="text-gray-600 mb-8">
+        <p className="mb-8 text-gray-600">
           Last updated: August 2026
         </p>
 
         <div className="space-y-8 text-gray-700 leading-8">
 
           <section>
-            <h2 className="text-2xl font-semibold text-brand-dark mb-3">
+            <h2 className="mb-3 text-2xl font-semibold text-brand-dark">
               Acceptance
             </h2>
 
@@ -28,25 +35,22 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold text-brand-dark mb-3">
+            <h2 className="mb-3 text-2xl font-semibold text-brand-dark">
               Website Content
             </h2>
 
             <p>
               All designs, images, text, graphics, branding, and other content
-              displayed on this website are the property of RC Architecture +
-              Design unless otherwise stated.
+              displayed on this website are the property of [Company Name] unless otherwise stated.
             </p>
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold text-brand-dark mb-3">
+            <h2 className="mb-3 text-2xl font-semibold text-brand-dark">
               Permitted Use
             </h2>
 
-            <p>You agree not to:</p>
-
-            <ul className="list-disc pl-6 mt-3 space-y-2">
+            <ul className="mt-3 list-disc space-y-2 pl-6">
               <li>Copy website content without permission.</li>
               <li>Attempt unauthorized access to our systems.</li>
               <li>Use the contact form for spam or unlawful purposes.</li>
@@ -54,19 +58,18 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold text-brand-dark mb-3">
+            <h2 className="mb-3 text-2xl font-semibold text-brand-dark">
               Disclaimer
             </h2>
 
             <p>
               Information presented on this website is provided for general
-              informational purposes only and may be updated without prior
-              notice.
+              informational purposes only and may be updated without prior notice.
             </p>
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold text-brand-dark mb-3">
+            <h2 className="mb-3 text-2xl font-semibold text-brand-dark">
               Limitation of Liability
             </h2>
 
@@ -78,14 +81,13 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold text-brand-dark mb-3">
+            <h2 className="mb-3 text-2xl font-semibold text-brand-dark">
               Changes
             </h2>
 
             <p>
               We reserve the right to update these Terms of Service at any time.
-              Continued use of the website constitutes acceptance of any
-              revisions.
+              Continued use of this website constitutes acceptance of any revisions.
             </p>
           </section>
 
