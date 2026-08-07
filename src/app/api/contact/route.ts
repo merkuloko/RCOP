@@ -96,7 +96,7 @@ export async function POST(request: Request) {
       from: 'Portfolio Contact Form <onboarding@resend.dev>', // Keep until custom domain is verified
       to: ['mollucrem@gmail.com'], // Replace with actual client email
       subject: `New Inquiry from ${name}`,
-      reply_to: email,
+      replyTo: email,
       html: `
         <h3>New Project Inquiry</h3>
         <p><strong>Name:</strong> ${name}</p>
