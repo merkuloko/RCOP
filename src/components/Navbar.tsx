@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Menu, X, Home, Briefcase, User, Grid, Mail } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 
 /**
  * Navbar Component
@@ -40,8 +41,14 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         {/* Brand Logo Placeholder as requested */}
         <Link href="#home" className="flex items-center space-x-2">
-          <div className="w-12 h-12 bg-brand-dark flex items-center justify-center rounded text-white font-bold text-xl">
-            [Logo dito]
+          <div className="w-12 h-12 flex items-center justify-center rounded overflow-hidden bg-brand-dark">
+            <Image
+              src="/logo.png"
+              alt="Company Logo"
+              width={48}
+              height={48}
+              className="object-contain"
+            />
           </div>
           <div className="flex flex-col">
             <span className={cn("font-bold text-lg leading-none", scrolled ? "text-brand-dark" : "text-white")}>[Company Name Dito]</span>

@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
+import Image from 'next/image';
 
 /**
  * Footer & ContactSection Component
@@ -167,8 +168,14 @@ const Footer = () => {
         {/* Footer Bottom */}
         <div className="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-gray-500 font-medium">
           <div className="flex items-center gap-4">
-            <div className="w-10 h-10 bg-brand-teal flex items-center justify-center rounded text-white font-bold text-sm">
-              [Company Name]
+            <div className="w-12 h-12 flex items-center justify-center rounded overflow-hidden bg-brand-dark">
+              <Image
+                src="/logo.png"
+                alt="Company Logo"
+                width={48}
+                height={48}
+                className="object-contain"
+              />
             </div>
             <span>© 2026 [Company Name]. All rights reserved.</span>
           </div>
