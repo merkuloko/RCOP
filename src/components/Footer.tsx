@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import { Turnstile } from '@marsidev/react-turnstile';
 import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
 import Image from 'next/image';
 
@@ -17,6 +18,9 @@ const Footer = () => {
   });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
+  // Turnstile state added here
+  const [turnstileToken, setTurnstileToken] = useState<string>('');
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -32,7 +36,11 @@ const Footer = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        // We include the turnstileToken alongside the rest of the form data
+        body: JSON.stringify({
+          ...formData,
+          turnstileToken
+        }),
       });
 
       if (response.ok) {
@@ -99,8 +107,8 @@ const Footer = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-sm font-bold text-brand-dark uppercase tracking-wider">Name</label>
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
@@ -111,8 +119,8 @@ const Footer = () => {
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-bold text-brand-dark uppercase tracking-wider">Email</label>
-                  <input 
-                    type="email" 
+                  <input
+                    type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
@@ -125,19 +133,25 @@ const Footer = () => {
 
               <div className="space-y-2">
                 <label className="text-sm font-bold text-brand-dark uppercase tracking-wider">Project Details</label>
-                <textarea 
+                <textarea
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  rows={4} 
-                  placeholder="Tell us about your project..." 
+                  rows={4}
+                  placeholder="Tell us about your project..."
                   className="w-full bg-gray-50 border border-gray-100 rounded-xl px-4 py-3 text-brand-dark focus:outline-none focus:ring-2 focus:ring-brand-teal transition-all resize-none"
                 />
               </div>
 
-              <button 
-                type="submit" 
+              {/* Turnstile Widget placed right before the submit button */}
+              <Turnstile
+                siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+                onSuccess={(token) => setTurnstileToken(token)}
+              />
+
+              <button
+                type="submit"
                 disabled={status === 'loading'}
                 className="w-full bg-brand-teal hover:bg-brand-accent text-white font-bold py-4 rounded-xl shadow-lg shadow-brand-teal/20 transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
               >
