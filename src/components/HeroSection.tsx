@@ -19,9 +19,9 @@ const HeroSection = () => {
       
       <div className="relative z-10 max-w-5xl px-4 md:px-6 py-20 md:py-0 text-center text-white">
         <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 leading-[1.1] md:leading-tight">
-          [Qoute Here] <br className="hidden md:block" />
-          [Qoute Here] <br className="hidden md:block" />
-          <span className="text-brand-teal">[Qoute Here]</span>
+          [Quote Here] <br className="hidden md:block" />
+          [Quote Here] <br className="hidden md:block" />
+          <span className="text-brand-teal">[Quote Here]</span>
         </h1>
         <p className="text-base md:text-xl mb-10 text-gray-200 max-w-2xl mx-auto leading-relaxed">
           [Paragraph Dito]
