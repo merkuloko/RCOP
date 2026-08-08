@@ -1,5 +1,6 @@
 import React from 'react';
 import { ExternalLink } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 /**
  * PortfolioSection Component
@@ -55,9 +56,13 @@ const PortfolioSection = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {projects.map((project, index) => (
-            <div 
+            <motion.div 
               key={index} 
               className="group relative overflow-hidden rounded-2xl bg-white shadow-md aspect-[4/3]"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.1 }}
             >
               <img 
                 src={project.image} 
@@ -68,7 +73,7 @@ const PortfolioSection = () => {
                 <span className="text-brand-teal font-bold text-[10px] md:text-xs uppercase tracking-widest mb-1 md:mb-2">{project.category}</span>
                 <h4 className="text-white text-xl md:text-2xl font-bold mb-2 md:mb-4">{project.title}</h4>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
