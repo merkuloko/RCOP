@@ -8,7 +8,7 @@ import { ArrowRight } from 'lucide-react';
  */
 const HeroSection = () => {
   return (
-    <section id="home" className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative min-h-[100svh] w-full flex items-center justify-center overflow-hidden">
       {/* Background Image Placeholder with Overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center z-0" 
@@ -17,16 +17,16 @@ const HeroSection = () => {
         }}
       />
       
-      <div className="relative z-10 max-w-5xl px-4 md:px-6 text-center text-white">
-        <h1 className="text-4xl md:text-7xl font-bold mb-6 leading-tight">
+      <div className="relative z-10 max-w-5xl px-4 md:px-6 py-20 md:py-0 text-center text-white">
+        <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 leading-[1.1] md:leading-tight">
           Thoughtful design. <br className="hidden md:block" />
           Functional spaces. <br className="hidden md:block" />
           <span className="text-brand-teal">Built around you.</span>
         </h1>
-        <p className="text-lg md:text-xl mb-10 text-gray-200 max-w-2xl mx-auto">
+        <p className="text-base md:text-xl mb-10 text-gray-200 max-w-2xl mx-auto leading-relaxed">
           We transform visions into architectural realities through innovative planning and meticulous design.
         </p>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full max-w-md mx-auto sm:max-w-none">
           <a 
             href="#portfolio" 
             className="px-8 py-4 bg-brand-teal hover:bg-brand-accent text-white font-semibold rounded-lg transition-all flex items-center gap-2 group w-full sm:w-auto justify-center"

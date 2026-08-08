@@ -35,13 +35,13 @@ const Navbar = () => {
 
   return (
     <nav className={cn(
-      "fixed top-0 w-full z-50 transition-all duration-300 px-4 md:px-6 py-4",
+      "fixed top-0 w-full z-50 transition-all duration-300 px-4 md:px-6 py-3 md:py-4",
       scrolled ? "bg-white shadow-md py-2" : "bg-transparent"
     )}>
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         {/* Brand Logo Placeholder as requested */}
         <Link href="#home" className="flex items-center space-x-2">
-          <div className="w-12 h-12 flex items-center justify-center rounded overflow-hidden bg-brand-dark">
+          <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded overflow-hidden bg-brand-dark shrink-0">
             <Image
               src="/logo.png"
               alt="Company Logo"
@@ -50,9 +50,9 @@ const Navbar = () => {
               className="object-contain"
             />
           </div>
-          <div className="flex flex-col">
-            <span className={cn("font-bold text-lg leading-none", scrolled ? "text-brand-dark" : "text-white")}>[Company Name Dito]</span>
-            <span className={cn("text-xs", scrolled ? "text-brand-teal" : "text-gray-200")}>[Pangalan ni Archi.]</span>
+          <div className="flex flex-col min-w-0">
+            <span className={cn("font-bold text-base md:text-lg leading-none truncate", scrolled ? "text-brand-dark" : "text-white")}>[Company Name Dito]</span>
+            <span className={cn("text-[10px] md:text-xs truncate", scrolled ? "text-brand-teal" : "text-gray-200")}>[Pangalan ni Archi.]</span>
           </div>
         </Link>
 
@@ -76,9 +76,10 @@ const Navbar = () => {
         <div className="md:hidden">
           <button 
             onClick={() => setIsOpen(!isOpen)}
-            className={cn(scrolled ? "text-brand-dark" : "text-white")}
+            className={cn("p-2 -mr-2 transition-colors", scrolled ? "text-brand-dark" : "text-white")}
+            aria-label="Toggle menu"
           >
-            {isOpen ? <X size={28} /> : <Menu size={28} />}
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
