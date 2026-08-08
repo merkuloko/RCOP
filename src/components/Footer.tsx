@@ -129,7 +129,7 @@ const Footer = () => {
                     rel="noopener noreferrer"
                     className="text-base md:text-lg font-medium hover:text-brand-teal transition-colors break-words"
                   >
-                    RC Architecture + Design
+                    [Company Name]
                   </a>
                 </div>
               </div>
